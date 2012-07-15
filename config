@@ -1,0 +1,40 @@
+# usage: enter ". config" at the prompt you want to use
+# 
+# AVOID SPACES IN FILENAME/PATHNAMES AS THIS IS GOING TO RESULT IN PROBLEMS
+
+# basedir -- feel free to customize
+export sdi_basedir="${HOME}/base/"
+
+# configure proxy (remove or modify this if you are trying to use this at home)
+#export "http_proxy=http://192.168.21.1:3128"
+
+# === please avoid modifying anything below here ===
+export CFLAGS="-fno-stack-protector"
+
+
+# subfolders
+export sdi_tmp="${sdi_basedir}/tmp"
+export sdi_l4_user="${sdi_basedir}/l4_user"
+export sdi_data="${sdi_basedir}/data"
+export sdi_cd_dir="${sdi_basedir}/cd_data"
+export sdi_tools="${sdi_basedir}/tools"
+
+# files
+export sdi_iso="${sdi_basedir}/sdios.iso"
+
+# links
+export sdi_l4="${sdi_basedir}/l4"
+export sdi_sdios="${sdi_basedir}/sdios"
+
+# qemu 
+export sdi_qemu_ctl="${sdi_basedir}/ctl"
+export sdi_qemu_com="${sdi_basedir}/com"
+
+export sdi_qemu_cmdline="qemu -cdrom ${sdi_iso} -net none -serial unix:${sdi_qemu_com},server,nowait -monitor unix:${sdi_qemu_ctl},server,nowait -gdb tcp::`cat \"${sdi_tools}/.gdbport\"`" &> /dev/null
+
+
+# links etc. there should be no need to change them
+export sdiLink_L4_Kernel="https://github.com/l4ka/pistachio/zipball/master"
+export sdiLink_L4_Config="https://raw.github.com/KIT-OSGroup/sdios/27cd203978d28cd0ef5400da914943a87b7cca8c/misc/l4-config/config.out"
+export sdiLink_SDIOS="https://github.com/KIT-OSGroup/sdios/zipball/master"
+export sdiLink_GRUB="http://alpha.gnu.org/gnu/grub/grub-0.97.tar.gz"
