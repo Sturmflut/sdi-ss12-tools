@@ -1,0 +1,19 @@
+# Source this file for some tools which aid the developing SDIOS.
+
+alias cdt="cd ${sdi_basedir}/tools"
+alias cds="cd ${sdi_basedir}/sdios/src"
+alias cdb="cd ${sdi_basedir}/sdios/build/"
+
+# rebuild SDIOS and start (or restart) qemu
+function rebuild_and_restart {
+    $sdi_tools/build_and_create_cd
+    
+    if pgrep qemu > /dev/null; then
+        $sdi_tools/reload_cd_and_restart
+    else
+        $sdi_tools/qemu_ctl start
+    fi
+}
+
+
+
