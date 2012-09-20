@@ -1,0 +1,3 @@
+#!/bin/bash
+
+minicom -o -b 115200 -D "unix#${sdi_qemu_com}" -c on
